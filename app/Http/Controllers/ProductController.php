@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::All();
+        $products = Product::with(['user', 'kategori'])->get();
         if (count($products) <= 0) {
             return Response()->json([
                 "status" => "Failed",
