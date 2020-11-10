@@ -92,7 +92,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::where('id', $id)->get();
+        $product = Product::with(['user', 'kategori'])->where('id', $id)->get();
         if (count($product) <= 0) {
             return Response()->json([
                 "status" => "Failed",
