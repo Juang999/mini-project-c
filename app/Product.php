@@ -10,4 +10,14 @@ class Product extends Model
     {
         return $this->hasMany(PesananDetail::class, 'product_id', 'id');
     }
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'kategori_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

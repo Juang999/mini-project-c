@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->float('berat');
             $table->string('gambar');
             $table->integer('kategori_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
