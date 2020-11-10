@@ -11,7 +11,7 @@ class productSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('products')->insert([
+        DB::table('products')->insert([[
             'nama' => 'Baju Mickeymouse2',
             'harga' => '50.000',
             'deskripsi' => 'baju yang terbuat dari bahan katun',
@@ -163,6 +163,6 @@ class productSeeder extends Seeder
             'berat' => 10.5,
             'gambar' => 'photo6140775993523153841.jpg',
             'kategori_id' => 1,
-        ]);
+        ]]);
     }
 }
