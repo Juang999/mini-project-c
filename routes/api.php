@@ -19,9 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // users
-Route::post('register', 'UserController@register');
-Route::post('login', 'UserController@login');
-Route::get('user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
+Route::post('register', 'UserControllerAPI@register');
+Route::post('login', 'UserControllerAPI@login');
+Route::get('user', 'UserControllerAPI@getAuthenticatedUser')->middleware('jwt.verify');
+Route::put('user/{id}', 'UserControllerAPI@update')->middleware('jwt.verify');
 
 // products
 Route::get('product', 'ProductControllerAPI@index');

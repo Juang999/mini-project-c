@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('alamat')->nullable();
             $table->bigInteger('no_hp')->nullable();
+            $table->string('avatar')->default('https://via.placeholder.com/150');
             $table->rememberToken();
             $table->timestamps();
         });
