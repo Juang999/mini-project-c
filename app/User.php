@@ -48,8 +48,8 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Pesanan::class);
     }
 
-    public function product()
+    public function toko()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasOne(Toko::class);
     }
 }

@@ -24,11 +24,12 @@ Route::post('login', 'UserController@login');
 Route::get('user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
 
 // products
-Route::get('product', 'ProductController@index');
-Route::get('product/{id}', 'ProductController@show');
-Route::post('product', 'ProductController@store')->middleware('jwt.verify');
-Route::put('product/{id}', 'ProductController@update')->middleware('jwt.verify');
-Route::delete('product/{id}', 'ProductController@destroy')->middleware('jwt.verify');
+Route::get('product', 'ProductControllerAPI@index');
+Route::get('product/{id}', 'ProductControllerAPI@show');
+Route::post('product', 'ProductControllerAPI@store')->middleware('jwt.verify');
+Route::put('product/{id}', 'ProductControllerAPI@update')->middleware('jwt.verify');
+Route::delete('product/{id}', 'ProductControllerAPI@destroy')->middleware('jwt.verify');
+Route::get('toko/{id}', 'ProductControllerAPI@getByToko');
 
 // test
 Route::get('test', 'APIController@getDataByUser');
