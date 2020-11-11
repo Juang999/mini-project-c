@@ -8,16 +8,16 @@ class Product extends Model
 {
     public function pesanan_details()
     {
-        return $this->hasMany(PesananDetail::class, 'product_id', 'id');
+        return $this->hasMany(PesananDetail::class);
     }
 
     public function kategori()
     {
-        return $this->belongsTo(Kategori::class, 'kategori_id', 'id');
+        return $this->belongsTo(Kategori::class);
     }
 
-    public function user()
+    public function toko()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Toko::class);
     }
 }
