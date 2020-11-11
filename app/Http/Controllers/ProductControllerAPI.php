@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ProductControllerAPI extends Controller
@@ -55,7 +56,6 @@ class ProductControllerAPI extends Controller
             'berat' => 'required',
             'gambar' => 'mimes:jpg,png,jpeg,svg',
             'kategori_id' => 'required',
-            'toko_id' => 'required'
         ]);
 
         if ($validation->fails()) {
@@ -65,6 +65,8 @@ class ProductControllerAPI extends Controller
             ], 400);
         }
 
+        $toko_id = Auth::id();
+
         $product = new Product();
         $product->nama = $request->nama;
         $product->harga = $request->harga;
@@ -73,7 +75,7 @@ class ProductControllerAPI extends Controller
         $product->berat = $request->berat;
         $product->gambar = $request->gambar;
         $product->kategori_id = $request->kategori_id;
-        $product->toko_id = $request->toko_id;
+        $product->toko_id = $toko_id;
 
         $product->save();
         
@@ -142,7 +144,6 @@ class ProductControllerAPI extends Controller
             'berat' => 'required',
             'gambar' => 'mimes:jpg,png,jpeg,svg',
             'kategori_id' => 'required',
-            'toko_id' => 'required'
         ]);
 
         if ($validation->fails()) {
@@ -151,6 +152,8 @@ class ProductControllerAPI extends Controller
                 "messege" => $validation->errors(),
             ], 400);
         }
+        
+        $toko_id = Auth::id();
 
         $product = Product::find($id);
         $product->nama = $request->nama;
@@ -160,7 +163,7 @@ class ProductControllerAPI extends Controller
         $product->berat = $request->berat;
         $product->gambar = $request->gambar;
         $product->kategori_id = $request->kategori_id;
-        $product->toko_id = $request->toko_id;
+        $product->toko_id = $toko_id;
 
         $product->save();
         return Response()->json([
