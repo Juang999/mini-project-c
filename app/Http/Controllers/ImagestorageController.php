@@ -20,7 +20,7 @@ class ImagestorageController extends Controller
         $imgname = date('dmyHis'). '.' . $extension;
         $this->validate($request, [ 'imgupload' => 'required|file|max:5000']);
         $path = Storage::putFileAs('public/images', $request->file('imgupload'), $imgname);
-        Image::create([ 'path' => $imgname ]);
+        Image::where('id', 1)->create([ 'path' => $imgname ]);
         return redirect()->back()->withSuccess("image sucess uploaded in " . $path);
     }
 }

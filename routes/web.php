@@ -33,3 +33,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // test
 Route::get('create', 'ImagestorageController@create');
 Route::post('store', 'ImagestorageController@store')->name('store');
+
+// user
+Route::get('/user/edit/{id}', 'UserController@edit');
+Route::put('/user/edit/{id}', 'UserController@update');
