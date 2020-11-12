@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->text('deskripsi');
             $table->integer('stok');
             $table->float('berat');
-            $table->string('gambar');
+            $table->longText('gambar');
             $table->integer('kategori_id');
             $table->integer('toko_id');
             $table->timestamps();
