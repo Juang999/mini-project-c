@@ -32,5 +32,9 @@ Route::put('product/{id}', 'ProductControllerAPI@update')->middleware('jwt.verif
 Route::delete('product/{id}', 'ProductControllerAPI@destroy')->middleware('jwt.verify');
 Route::get('toko/{id}', 'ProductControllerAPI@getByToko');
 
+// toko
+Route::get('toko', 'TokoControllerAPI@tokoSaya')->middleware('jwt.verify');
+Route::post('toko', 'TokoControllerAPI@store')->middleware('jwt.verify');
+
 // test
 Route::get('test', 'APIController@getDataByUser');

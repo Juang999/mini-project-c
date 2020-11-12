@@ -19,6 +19,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', 'ProductController@index');
+// product
+Route::get('/product', 'ProductController@index');
+Route::get('/product/{id}', 'ProductController@show');
+Route::get('/toko/{id}', 'ProductController@getByToko');
+
+// toko
+Route::get('/toko/{nama_toko}', 'TokoController@show');
+
 Route::get('/user', 'UserController@index');
 Route::get('/home', 'HomeController@index')->name('home');
+
+// test
+Route::get('create', 'ImagestorageController@create');
+Route::post('store', 'ImagestorageController@store')->name('store');
