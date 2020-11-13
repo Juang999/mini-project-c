@@ -66,6 +66,7 @@ class ProductControllerAPI extends Controller
         }
 
         $toko_id = Auth::id();
+        $gambar = base64_encode(file_get_contents($request->file('gambar')));
 
         $product = new Product();
         $product->nama = $request->nama;
@@ -75,8 +76,7 @@ class ProductControllerAPI extends Controller
         $product->berat = $request->berat;
         $product->kategori_id = $request->kategori_id;
         $product->toko_id = $toko_id;
-        $gambar = base64_encode(file_get_contents($request->file('gambar')));
-        $product->gambar = 'uri:' . $gambar;
+        $product->gambar = 'url:' . $gambar;
 
         $product->save();
         
@@ -155,6 +155,7 @@ class ProductControllerAPI extends Controller
         }
         
         $toko_id = Auth::id();
+        $gambar = base64_encode(file_get_contents($request->file('gambar')));
 
         $product = Product::find($id);
         $product->nama = $request->nama;
@@ -162,9 +163,9 @@ class ProductControllerAPI extends Controller
         $product->deskripsi = $request->deskripsi;
         $product->stok = $request->stok;
         $product->berat = $request->berat;
-        $product->gambar = $request->gambar;
         $product->kategori_id = $request->kategori_id;
         $product->toko_id = $toko_id;
+        $product->gambar = 'url:' . $gambar;
 
         $product->save();
         return Response()->json([

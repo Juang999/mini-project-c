@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('harga');
             $table->text('deskripsi');
             $table->integer('stok');
+            $table->integer('terjual')->default(0);
             $table->float('berat');
             $table->longText('gambar');
             $table->integer('kategori_id');

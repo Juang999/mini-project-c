@@ -62,7 +62,8 @@ class TokoControllerAPI extends Controller
         $toko = new Toko();
         $toko->nama_toko = $request->nama_toko;
         $toko->user_id = $user_id;
-        $toko->logo = $request->logo;
+        $logo = base64_encode(file_get_contents($request->file('logo')));
+        $toko->logo = 'url:' . $logo;
 
         $toko->save();
         

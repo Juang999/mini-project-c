@@ -85,7 +85,7 @@ class UserControllerAPI extends Controller
         }
 
         $validation = Validator::make($request->all(), [
-            'name' => 'required|max:50|unique:users',
+            'name' => 'required|max:255',
             'avatar' => 'mimes:jpg,png,jpeg,svg',
             
         ]);
@@ -96,12 +96,14 @@ class UserControllerAPI extends Controller
                 "messege" => $validation->errors(),
             ], 400);
         }
-
+        
         $user = User::find($id);
+        
+        $avatar = base64_encode(file_get_contents($request->file('avatar')));
         $user->name = $request->name;
         $user->alamat = $request->alamat;
         $user->no_hp = $request->no_hp;
-        $user->avatar = $request->avatar;
+        $user->avatar = 'url:' . $avatar;
 
         $user->save();
         return Response()->json([
