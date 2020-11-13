@@ -6,6 +6,7 @@
 
         <ul class="list-group mt-3">
             <li class="list-group-item active">{{ $product->nama }}</li>
+            <li class="list-group-item"><img src="{{ $product->gambar }}" alt="" width="400px"></li>
             <li class="list-group-item">{{ $product->kategori->kategori }}</li>
             <li class="list-group-item">{{ $product->harga }}</li>
             <li class="list-group-item">{{ $product->deskripsi }}</li>
