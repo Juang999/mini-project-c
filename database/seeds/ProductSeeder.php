@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([[
             'nama' => 'Dear Allah',
             'harga' => 50000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -25,7 +25,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Jika Kita Tidak Pernah Jatuh Cinta',
             'harga' => 35000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -35,7 +35,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Janur Ireng',
             'harga' => 32000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -45,7 +45,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Selena Nebula',
             'harga' => 65000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -55,7 +55,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Senja & Pagi',
             'harga' => 40000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -65,7 +65,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Rusak Saja Buku Ini',
             'harga' => 30000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -75,7 +75,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Wanita Berkarir Surga',
             'harga' => 55000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -85,7 +85,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Kisah Tanah Jawa',
             'harga' => 75000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -95,7 +95,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'My Lecturer My Husband',
             'harga' => 22000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -105,7 +105,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Mencintaimu Dalam Doa',
             'harga' => 60000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -115,7 +115,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Galaksi',
             'harga' => 80000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -125,7 +125,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Garis Waktu',
             'harga' => 30000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -135,7 +135,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Inquiete',
             'harga' => 30000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -145,7 +145,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Secrets',
             'harga' => 30000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -155,7 +155,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Teluk Alaska',
             'harga' => 25000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -165,7 +165,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Kamu Terlalu Banyak Bercanda',
             'harga' => 33000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
@@ -175,7 +175,7 @@ class ProductSeeder extends Seeder
         ], [
             'nama' => 'Next',
             'harga' => 30000, 
-            'Deskripsi' => 'Novel',
+            'deskripsi' => 'Novel',
             'stok' => 20,
             'terjual' => 0,
             'berat' => 100,
