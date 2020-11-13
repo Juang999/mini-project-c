@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -64,7 +65,7 @@ class ProductControllerAPI extends Controller
                 "messege" => $validation->errors(),
             ], 400);
         }
-
+        $client = new Client();
         $toko_id = Auth::id();
         $gambar = base64_encode(file_get_contents($request->file('gambar')));
 
@@ -76,7 +77,17 @@ class ProductControllerAPI extends Controller
         $product->berat = $request->berat;
         $product->kategori_id = $request->kategori_id;
         $product->toko_id = $toko_id;
-        $product->gambar = 'url:' . $gambar;
+        $response = $client->request('POST', 'https://freeimage.host/api/1/upload', [
+            'form_params' => [
+                'key' => '6d207e02198a847aa98d0a2a901485a5',
+                'action' => 'upload',
+                'source' => $gambar,
+                'format' => 'json',
+            ]
+        ]);
+        $body = $response->getBody();
+        $response =  json_decode($body);
+        $product->gambar = $response->image->display_url;
 
         $product->save();
         
@@ -154,6 +165,7 @@ class ProductControllerAPI extends Controller
             ], 400);
         }
         
+        $client = new Client();
         $toko_id = Auth::id();
         $gambar = base64_encode(file_get_contents($request->file('gambar')));
 
@@ -165,7 +177,17 @@ class ProductControllerAPI extends Controller
         $product->berat = $request->berat;
         $product->kategori_id = $request->kategori_id;
         $product->toko_id = $toko_id;
-        $product->gambar = 'url:' . $gambar;
+        $response = $client->request('POST', 'https://freeimage.host/api/1/upload', [
+            'form_params' => [
+                'key' => '6d207e02198a847aa98d0a2a901485a5',
+                'action' => 'upload',
+                'source' => $gambar,
+                'format' => 'json',
+            ]
+        ]);
+        $body = $response->getBody();
+        $response =  json_decode($body);
+        $product->gambar = $response->image->display_url;
 
         $product->save();
         return Response()->json([

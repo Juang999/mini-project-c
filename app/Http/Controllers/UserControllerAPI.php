@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -96,14 +97,27 @@ class UserControllerAPI extends Controller
                 "messege" => $validation->errors(),
             ], 400);
         }
-        
+
         $user = User::find($id);
+        $client = new Client();
         
         $avatar = base64_encode(file_get_contents($request->file('avatar')));
         $user->name = $request->name;
         $user->alamat = $request->alamat;
         $user->no_hp = $request->no_hp;
-        $user->avatar = 'url:' . $avatar;
+
+        $response = $client->request('POST', 'https://freeimage.host/api/1/upload', [
+            'form_params' => [
+                'key' => '6d207e02198a847aa98d0a2a901485a5',
+                'action' => 'upload',
+                'source' => $avatar,
+                'format' => 'json',
+            ]
+        ]);
+        $body = $response->getBody();
+        $response =  json_decode($body);
+
+        $user->avatar = $response->image->display_url;
 
         $user->save();
         return Response()->json([

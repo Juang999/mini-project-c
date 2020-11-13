@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('alamat')->nullable();
             $table->bigInteger('no_hp')->nullable();
-            $table->longText('avatar')->nullable();
+            $table->string('avatar')->default('https://iili.io/Fq59Tv.png');
             $table->rememberToken();
             $table->timestamps();
         });

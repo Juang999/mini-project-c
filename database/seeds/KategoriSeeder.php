@@ -13,11 +13,19 @@ class KategoriSeeder extends Seeder
     public function run()
     {
         DB::table('kategoris')->insert([
-            'kategori' => 'Kaos',
+            'kategori' => 'Novel',
         ]);
 
         DB::table('kategoris')->insert([
-            'kategori' => 'Kemeja',
+            'kategori' => 'Komik',
+        ]);
+
+        DB::table('kategoris')->insert([
+            'kategori' => 'Agama',
+        ]);
+
+        DB::table('kategoris')->insert([
+            'kategori' => 'Pelajaran',
         ]);
     }
 }

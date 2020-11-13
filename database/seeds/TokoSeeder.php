@@ -13,15 +13,10 @@ class TokoSeeder extends Seeder
     public function run()
     {
         DB::table('tokos')->insert([
-            'nama_toko' => 'Prodota',
+            'nama_toko' => 'Alivoice',
             'user_id' => '1',
-            'logo' => 'logo1.png',
+            'logo' => 'https://iili.io/FqYz1S.jpg',
         ]);
 
-        DB::table('tokos')->insert([
-            'nama_toko' => 'Kizaru',
-            'user_id' => '2',
-            'logo' => 'logo2.png',
-        ]);
     }
 }

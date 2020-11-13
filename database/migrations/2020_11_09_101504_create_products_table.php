@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('stok');
             $table->integer('terjual')->default(0);
             $table->float('berat');
-            $table->longText('gambar');
+            $table->string('gambar');
             $table->integer('kategori_id');
             $table->integer('toko_id');
             $table->timestamps();
