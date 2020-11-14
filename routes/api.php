@@ -19,9 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // users
-Route::post('register', 'UserController@register');
-Route::post('login', 'UserController@login');
-Route::get('user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
+Route::post('register', 'UserControllerAPI@register');
+Route::post('login', 'UserControllerAPI@login');
+Route::get('user', 'UserControllerAPI@getAuthenticatedUser')->middleware('jwt.verify');
+Route::put('user/{id}', 'UserControllerAPI@update')->middleware('jwt.verify');
 
 // products
 Route::get('product', 'ProductControllerAPI@index');
@@ -30,6 +31,14 @@ Route::post('product', 'ProductControllerAPI@store')->middleware('jwt.verify');
 Route::put('product/{id}', 'ProductControllerAPI@update')->middleware('jwt.verify');
 Route::delete('product/{id}', 'ProductControllerAPI@destroy')->middleware('jwt.verify');
 Route::get('toko/{id}', 'ProductControllerAPI@getByToko');
+Route::get('kategori/{id}', 'ProductControllerAPI@getByToko');
+Route::get('cari/{keyword}', 'ProductControllerAPI@cari');
+
+// toko
+Route::get('toko', 'TokoControllerAPI@tokoSaya')->middleware('jwt.verify');
+Route::post('toko', 'TokoControllerAPI@store')->middleware('jwt.verify');
 
 // test
 Route::get('test', 'APIController@getDataByUser');
+
+// kategori

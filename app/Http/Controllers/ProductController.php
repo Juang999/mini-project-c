@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+use App\Toko;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +15,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        // mengambil data dari table product
+        $products = Product::all();
+
+        // mengirim data product ke view index
+        return view('product.index', compact('products'));
     }
 
     /**
@@ -45,7 +51,15 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        // cari artikel berdasarkan slug
+        $product = Product::where('id', $id)->first();
+
+        // jika artikel tidak ditemukan maka tampilkan error
+        if ($product == null)
+            abort(404);
+
+        // alihkan ke halaman artikel tunggal
+        return view('product.single', compact('product'));
     }
 
     /**
@@ -80,5 +94,13 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getByToko($id)
+    {
+        $products = Product::where('toko_id', $id)->get();
+        $toko = Toko::where('id', $id)->first();
+        $nama_toko = $toko->nama_toko;
+        return view('product.toko', compact('products', 'toko'));
     }
 }
