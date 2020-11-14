@@ -237,4 +237,40 @@ class ProductControllerAPI extends Controller
         ], 200);
     }
     
+    public function getByKategori($kategori)
+    {
+        $product = Product::with(['toko', 'kategori'])->where('kategori_id', $kategori)->get();
+        if (count($product) <= 0) {
+            return Response()->json([
+                "status" => "Failed",
+                "message" => "Data Tidak Ditemukan",
+            ], 400);
+        }
+        return Response()->json([
+            "status" => "Success",
+            "message" => "Data Berhasil Ditampilkan",
+            "data" => $product,
+        ], 200);
+    }
+
+    public function cari($cari)
+    {
+        // menangkap data pencarian
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $products = Product::with(['toko', 'kategori'])->where('nama', 'like', "%" . $cari . "%")->get();
+
+        // mengirim data artikel ke view index
+        if (count($products) <= 0) {
+            return Response()->json([
+                "status" => "Failed",
+                "message" => "Data Tidak Ditemukan",
+            ], 400);
+        }
+        return Response()->json([
+            "status" => "Success",
+            "message" => "Data Berhasil Ditampilkan",
+            "data" => $products,
+        ], 200);
+    }
 }

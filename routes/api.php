@@ -31,6 +31,8 @@ Route::post('product', 'ProductControllerAPI@store')->middleware('jwt.verify');
 Route::put('product/{id}', 'ProductControllerAPI@update')->middleware('jwt.verify');
 Route::delete('product/{id}', 'ProductControllerAPI@destroy')->middleware('jwt.verify');
 Route::get('toko/{id}', 'ProductControllerAPI@getByToko');
+Route::get('kategori/{id}', 'ProductControllerAPI@getByToko');
+Route::get('cari/{keyword}', 'ProductControllerAPI@cari');
 
 // toko
 Route::get('toko', 'TokoControllerAPI@tokoSaya')->middleware('jwt.verify');
@@ -38,3 +40,5 @@ Route::post('toko', 'TokoControllerAPI@store')->middleware('jwt.verify');
 
 // test
 Route::get('test', 'APIController@getDataByUser');
+
+// kategori
