@@ -2,77 +2,118 @@
 
 namespace App\Http\Controllers;
 
+use App\Image;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function login(Request $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $credentials = $request->only('email', 'password');
+        // mengambil data dari table user
+        $users = User::all();
 
-        try {
-            if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 400);
-            }
-        } catch (JWTException $e) {
-            return response()->json(['error' => 'could_not_create_token'], 500);
-        }
-
-        return response()->json(compact('token'));
+        // mengirim data user ke view index
+        return view('user.index', compact('users'));
     }
 
-    public function register(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'role_id' => 'required|string',
-        ]);
-
-        if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
-        }
-
-        $user = User::create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password')),
-            'role_id' => $request->get('role_id'),
-        ]);
-
-        $token = JWTAuth::fromUser($user);
-
-        return response()->json(compact('user','token'),201);
+        //
     }
 
-    public function getAuthenticatedUser()
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        try {
+        //
+    }
 
-            if (! $user = JWTAuth::parseToken()->authenticate()) {
-                return response()->json(['user_not_found'], 404);
-            }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
 
-        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        // mengambil data artikel berdasarkan id yang dipilih
+        $user = User::find($id);
+        // mengirim data artikel yang didapat ke view edit.blade.php
+        return view('user.edit', compact('user'));
+    }
 
-            return response()->json(['token_expired'], $e->getStatusCode());
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        
+        // $extension = $request->file('avatar')->extension();
+        // $imgname = date('dmyHis'). '.' . $extension;
+        // $this->validate($request, [ 'avatar' => 'file|max:5000']);
+        // $path = Storage::putFileAs('public/images', $request->file('avatar'), $imgname);
+        // User::create([ 'avatar' => $imgname ]);
+        
+        // validasi agar form wajib diisi
+        $request->validate([
+            'name' => 'required',
+            ]);
+            
+            // update data artikel
+            $user = User::find($id);
+            $user->name = $request->name;
+            // $user->avatar = $request->avatar;
+            $user->alamat = $request->alamat;
+            $user->no_hp = $request->no_hp;
+            $user->save();
+            
+            // alihkan ke halaman utama
+            // return redirect()->back()->withSuccess("image sucess uploaded in " . $path);
 
-        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
 
-            return response()->json(['token_invalid'], $e->getStatusCode());
+        // return redirect('');
+    }
 
-        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
-
-            return response()->json(['token_absent'], $e->getStatusCode());
-
-        }
-
-        return response()->json(compact('user'));
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('alamat')->nullable();
-            $table->integer('no_hp')->nullable();
-            $table->string('role_id')->default(1);
+            $table->bigInteger('no_hp')->nullable();
+            $table->string('avatar')->default('https://iili.io/Fq59Tv.png');
             $table->rememberToken();
             $table->timestamps();
         });
