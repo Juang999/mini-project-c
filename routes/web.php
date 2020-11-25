@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', 'SudoController@dashboard');
+Route::get('/user', 'SudoController@index');
+Route::get('/user/{user}', 'SudoController@show');
+Route::delete('/user/{user}', 'SudoController@destroy');
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'homeController@index')->name('home');
